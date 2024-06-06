@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -8,33 +8,60 @@ export const Navegation = () => {
   return (
 
     <>
-        <NavStyled>
-                <div>
-                    <img src="/logo.jpg" alt="" height={100} width={300}/>
-                </div>
-                <div className='enlaces'>
-                    <NavLink to={'/'}>INICIO</NavLink>
-                    <NavLink to={'/servicios'}>SERVICIOS</NavLink>
-                    <NavLink to={'/comodin'}>COMODIN</NavLink>
-                    <NavLink to={'/nosotros'}>NOSOTROS</NavLink>
-                    <NavLink to={'/contactos'}>CONTACTOS</NavLink>
-                </div>
-        </NavStyled>
+            <ContainerNav>
+                <NavStyled>
+                        <div className='logo'>
+                            <NavLink to={'/'}>
+                                D&H-Construccion y ingenieria
+                            </NavLink>
+                        </div>
+                        <div className='enlaces'>
+                            <NavLink to={'/arquitectura'}>Arquitectura</NavLink>
+                            <NavLink to={'/ingenieria'}>Ingenieria</NavLink>
+                            <NavLink to={'/comodin'}>Comodin</NavLink>
+                            <NavLink to={'/nosotros'}>Nosotros</NavLink>
+                            <NavLink to={'/contactos'}>Contactos</NavLink>
+                        </div>
+                </NavStyled>
+            </ContainerNav>
         <Outlet/>
-
     </>
-    
-    
-
   )
 
 }
+
+
+const ContainerNav = styled.div`
+    
+    
+    position: relative;
+    margin: 0 auto;
+    position:fixed;
+    width:140rem;
+
+`
 
 const NavStyled = styled.nav`
 
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items:center;
+    left:0;
+    top: 0;
+    height: 14rem;
+    max-width: 100%;
+    margin: 0 auto;
+
+    .logo{
+
+        a{
+            
+            font-weight: 400;
+            font-size: 2.5rem
+        }
+
+    }
     
 
     .enlaces{
@@ -45,31 +72,28 @@ const NavStyled = styled.nav`
         align-items: center;
 
         a{
-            text-decoration:none;
+            
             color: black;
-            font-weight: bold;
-            font-size: 2rem;
-            border: 1px solid orange;
-            border-radius: 1.5rem;
+            font-size: 1.6rem;
             padding: 8px;
             transition: all .5s;
+
+            &::after {
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background-color: black;
+            transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+            width: 100%;
+            }
         }
-
-        a:hover{
-
-            background-color:blue;
-            color:white;
-
-
-        }
-
-
     }
-
-    
-
-    
 `;
+
 
 
 
