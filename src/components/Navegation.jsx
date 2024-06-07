@@ -1,14 +1,15 @@
-
+import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components'
 
 
-
 export const Navegation = () => {
+
+    const [ clicked, setClicked ] = useState( false );
+
   return (
 
     <>
-            <ContainerNav>
                 <NavStyled>
                         <div className='logo'>
                             <NavLink to={'/'}>
@@ -16,47 +17,48 @@ export const Navegation = () => {
                             </NavLink>
                         </div>
                         <div className='enlaces'>
-                            <NavLink to={'/arquitectura'}>Arquitectura</NavLink>
-                            <NavLink to={'/ingenieria'}>Ingenieria</NavLink>
-                            <NavLink to={'/comodin'}>Comodin</NavLink>
-                            <NavLink to={'/nosotros'}>Nosotros</NavLink>
-                            <NavLink to={'/contactos'}>Contactos</NavLink>
+                            <NavLink onClick={ () => setClicked( false ) } className={({isActive})=>isActive ? 'navactive' : ''} to={'/arquitectura'}>Arquitectura</NavLink>
+                            <NavLink onClick={ () => setClicked( false ) } className={({isActive})=>isActive ? 'navactive' : ''} to={'/ingenieria'}>Ingenieria</NavLink>
+                            <NavLink onClick={ () => setClicked( false ) } className={({isActive})=>isActive ? 'navactive' : ''} to={'/comodin'}>Comodin</NavLink>
+                            <NavLink onClick={ () => setClicked( false ) } className={({isActive})=>isActive ? 'navactive' :''} to={'/nosotros'}>Nosotros</NavLink>
+                            <NavLink onClick={ () => setClicked( false ) } className={({isActive})=>isActive ? 'navactive':''} to={'/contactos'}>Contactos</NavLink>
                         </div>
                 </NavStyled>
-            </ContainerNav>
-        <Outlet/>
+
+                <MargenOutlet>
+                    <Outlet/>   
+                </MargenOutlet>
     </>
   )
 
 }
 
+const MargenOutlet = styled.div`
 
-const ContainerNav = styled.div`
+    margin-top:14rem;
     
-    
-    position: relative;
-    margin: 0 auto;
-    position:fixed;
-    width:140rem;
 
 `
 
 const NavStyled = styled.nav`
 
+    position:fixed;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
-    left:0;
-    top: 0;
+    top:0;
+    width: 100%;
+    max-width:140rem;
     height: 14rem;
-    max-width: 100%;
-    margin: 0 auto;
+    z-index: 1000000000000;
+    border-bottom: 1px solid grey ;
+    background-color:white;
 
+    
     .logo{
 
         a{
-            
             font-weight: 400;
             font-size: 2.5rem
         }
@@ -89,6 +91,13 @@ const NavStyled = styled.nav`
 
             &:hover::after {
             width: 100%;
+            }
+
+            &.navactive::after{
+
+                
+                width: 100%;
+
             }
         }
     }

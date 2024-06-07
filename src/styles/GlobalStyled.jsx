@@ -16,10 +16,11 @@ export const Global = createGlobalStyle`
 
    body{
 
+      
       max-width: 140rem;
       margin: 0 auto;
       font-family: "Comic Neue", sans-serif;
-      height:2000px;
+      
 
    }
 
