@@ -1,10 +1,12 @@
+import { Carousel } from "../components/Carousel"
+
 
 export const Inicio = () => {
 
   return (
 
     <>
-        <div>HOLA ME QUEDO ZZZZ</div>
+        <Carousel/>
     
     </>
 
